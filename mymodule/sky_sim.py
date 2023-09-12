@@ -11,7 +11,7 @@ def clip_to_radius():
 # from wikipedia
 def generate_sky_pos():
     RA = '00:22:44.3'
-    DEC = '41:16:09'
+    DEC = '41:17:09'
 
 # convert to decimal degrees
 d, m, s = DEC.split(':')
