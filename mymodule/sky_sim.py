@@ -7,7 +7,6 @@ from math import cos, pi, sin
 
 def clip_to_radius():
     pass
-
 # from wikipedia
 def generate_sky_pos():
     RA = '00:22:44.3'
@@ -24,7 +23,6 @@ ra = ra/cos(dec*pi/180)
 nsrc = 1_000_000
 
 # make 1000 stars within 1 degree of Andromeda
-
 ras = []
 decs = []
 for i in range(nsrc):
@@ -33,7 +31,7 @@ for i in range(nsrc):
 
 
 # now write these to a csv file for use by my other program
-f = open('catalog.csv','w')
-print("id,ra,dec", file=f)
-for i in range(nsrc):
-    print("{0:07d}, {1:12f}, {2:12f}".format(i, ras[i], decs[i]), file=f)
+with open('catalog.csv','w') as f:
+    print("id,ra,dec", file=f)
+    for i in range(nsrc):
+     print(f"{i:07d}, {ras[i]:12f}, {decs[i]:12f}".format(i, ras[i], decs[i]), file=f)
