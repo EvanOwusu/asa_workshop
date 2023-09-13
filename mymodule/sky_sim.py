@@ -102,8 +102,8 @@ def main():
     logging.basicConfig(
         format="%(name)s:%(levelname)s %(message)s",
         level=loglevels[options.logging])
-    log = logging.getLogger("<my module>")
-    l
+    log = logging.getLogger("sky_sim")
+
     # if ra/dec are not supplied the use a default value
     if None in [options.ra, options.dec]:
         ra, dec = get_radec()
@@ -112,6 +112,18 @@ def main():
         dec = options.dec
     
     ras, decs = make_stars(ra,dec)
+
+def clip_to_radius(ra, dec, ras, decs):
+    """
+    Clip the ra/dec values to within 1 degree of the given ra/dec
+    """
+    output_ras = []
+    output_decs = []
+    for ra_i, dec_i in zip(ras, decs):
+        if (ra_i - ra)**2 + (dec_i - dec)**2 < 1:
+            output_ras.append(ra_i)
+            output_decs.append(dec_i)
+    return output_ras, output_decs
 
 
     # now write these to a csv file for use by my other program
