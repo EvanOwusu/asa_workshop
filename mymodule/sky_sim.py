@@ -9,6 +9,9 @@ def clip_to_radius():
     pass
 # from wikipedia
 def generate_sky_pos():
+    """
+    Generate the ra/dec coordinates of Andromeda in decimal degrees.
+    """
     RA = '00:22:44.3'
     DEC = '41:17:09'
 
@@ -25,7 +28,8 @@ def generate_sky_pos():
 def get_radec():        
     """
     Generate the ra/dec coordinates of Andromeda
-    in decimal degrees.
+    in decimal degrees. ra is the right ascension in the sky, and
+    dec is the declination.
 
     Returns
     -------
