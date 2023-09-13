@@ -6,6 +6,7 @@ from numpy.random import uniform
 from math import cos, pi, sin
 import argparse
 import mymodule
+import logging
 
 NSRC = 1000000
 
@@ -88,6 +89,19 @@ def main():
     parser = skysim_parser()
     parser.add_argument('--version', action='version', version=f'%(prog)s {mymodule.__version__}')
     options = parser.parse_args()
+    # configure logging
+    loglevels = {'DEBUG':logging.DEBUG, 
+                 'INFO':logging.INFO, 
+                 'WARNING':logging.WARNING, 
+                 'ERROR':logging.ERROR, 
+                 'CRITICAL':logging.CRITICAL
+                 }
+
+    logging.basicConfig(
+        format="%(name)s:%(levelname)s %(message)s",
+        level=loglevels[options.logging])
+    log = logging.getLogger("<my module>")
+    l
     # if ra/dec are not supplied the use a default value
     if None in [options.ra, options.dec]:
         ra, dec = get_radec()
@@ -103,4 +117,4 @@ def main():
         print("id,ra,dec", file=f)
         for i in range(len(ras)):
             print(f"{i:07d}, {ras[i]:12f}, {decs[i]:12f}", file=f)
-    print(f"Wrote {options.out}")
+    log.info(f"Wrote {options.out}")
