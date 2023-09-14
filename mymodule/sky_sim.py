@@ -7,8 +7,9 @@ from math import cos, pi, sin
 import argparse
 import mymodule
 import logging
+import numpy as np
 
-NSRC = 1000000
+NSRC = 5000000
 
 def clip_to_radius():
     pass
